@@ -5,5 +5,5 @@
   gather_facts: false
   tasks:
      - name: Print record_a
-      ansible.builtin.debug:
-        msg: "HOla Evelin"
+       ansible.builtin.debug:
+         msg: "HOla Evelin"

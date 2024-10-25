@@ -4,6 +4,6 @@
   connection: local
   gather_facts: false
   tasks:
-    - name: Print record_a
+    - name: tarea1
       ansible.builtin.debug:
         msg: "HOla Evelin"

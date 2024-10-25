@@ -1,0 +1,9 @@
+---
+- name: playbook
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+     - name: Print record_a
+      ansible.builtin.debug:
+        msg: "HOla Evelin"

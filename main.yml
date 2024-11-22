@@ -20,7 +20,11 @@
           dependencies:
             galaxy: requirements.yml
             system: bindep.txt
-        
+
+    - name: Ejecutar ansible-builder para crear el EE
+      ansible.builtin.command:
+        cmd: pip3 install ansible-builder
+
 
     - name: Ejecutar ansible-builder para crear el EE
       ansible.builtin.command:

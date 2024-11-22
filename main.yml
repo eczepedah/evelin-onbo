@@ -9,7 +9,7 @@
           collections:
             - name: community.general
               version: "5.2.0"
-        delegate_to: locahost
+        delegate_to: localhost
 
     - name: Crear el archivo execution-environment.yml
       copy:
@@ -19,22 +19,22 @@
           dependencies:
             galaxy: requirements.yml
             system: bindep.txt
-        delegate_to: locahost
+        delegate_to: localhost
 
     - name: Ejecutar ansible-builder para crear el EE
       ansible.builtin.command:
         cmd: ansible-builder build --tag custom-ee:latest 
         chdir: "{{ playbook_dir }}"
-      delegate_to: locahost
+      delegate_to: localhost
 
     - name: Verificar que la imagen se creó correctamente
       ansible.builtin.command:
         cmd: podman images | grep custom-ee
       register: ee_image_check
-      delegate_to: locahost
+      delegate_to: localhost
 
     - name: Subir la imagen al registro de contenedores (opcional)
       ansible.builtin.command:
         cmd: podman push custom-ee:latest registry.example.com/custom-ee:latest
       when: upload_image | default(false)
-      delegate_to: locahost
+      delegate_to: localhost

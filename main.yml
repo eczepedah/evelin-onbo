@@ -20,19 +20,10 @@
           dependencies:
             galaxy: requirements.yml
             system: bindep.txt
-
+  
     - name: Ejecutar ansible-builder para crear el EE
       ansible.builtin.command:
-        cmd: pip3 install ansible-builder
-
-    - name: Ejecutar ansible-builder para crear el EE
-      ansible.builtin.command:
-        cmd: export PATH="$PATH:~/.local/bin"
-
-
-    - name: Ejecutar ansible-builder para crear el EE
-      ansible.builtin.command:
-        cmd: ansible-builder build --tag custom-ee:latest 
+        cmd: ${HOME}/.local/bin/ansible-builder build --tag ansible-pah.liverpool.com.mx/liverpool/custom-ee:latest 
         chdir: "/var"
     
 

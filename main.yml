@@ -25,6 +25,10 @@
       ansible.builtin.command:
         cmd: pip3 install ansible-builder
 
+    - name: Ejecutar ansible-builder para crear el EE
+      ansible.builtin.command:
+        cmd: export PATH="$PATH:~/.local/bin"
+
 
     - name: Ejecutar ansible-builder para crear el EE
       ansible.builtin.command:

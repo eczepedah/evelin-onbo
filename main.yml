@@ -29,7 +29,7 @@
     - name: Ejecutar ansible-builder para crear el EE
       ansible.builtin.command:
         cmd: ansible-builder build --tag custom-ee:latest 
-        chdir: "/tmp"
+        chdir: "/var"
     
 
     - name: Verificar que la imagen se creó correctamente

@@ -1,5 +1,5 @@
 - name: Automatizar la creación de un EE
-  hosts: localhost
+  hosts: All
   tasks:
     - name: Crear el archivo requirements.yml
       copy:

@@ -1,6 +1,6 @@
 - name: Automatizar la creación de un EE
   hosts: localhost
-  conexion: local
+  connection: local
   tasks:
     - name: Crear el archivo requirements.yml
       copy:

@@ -25,7 +25,7 @@
     - name: Ejecutar ansible-builder para crear el EE
       ansible.builtin.command:
         cmd: ansible-builder build --tag custom-ee:latest 
-        chdir: "{{ playbook_dir }}"
+        chdir: "/tmp"
     
 
     - name: Verificar que la imagen se creó correctamente

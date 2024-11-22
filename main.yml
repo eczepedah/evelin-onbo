@@ -1,9 +1,35 @@
----
-- name: playbook
+- name: Automatizar la creación de un EE
   hosts: localhost
-  connection: local
-  gather_facts: false
   tasks:
-    - name: tarea1
-      ansible.builtin.debug:
-        msg: "evelin"  
+    - name: Crear el archivo requirements.yml
+      copy:
+        dest: ./requirements.yml
+        content: |
+          ---
+          collections:
+            - name: community.general
+              version: "5.2.0"
+
+    - name: Crear el archivo execution-environment.yml
+      copy:
+        dest: ./execution-environment.yml
+        content: |
+          version: 1
+          dependencies:
+            galaxy: requirements.yml
+            system: bindep.txt
+
+    - name: Ejecutar ansible-builder para crear el EE
+      ansible.builtin.command:
+        cmd: ansible-builder build --tag custom-ee:latest 
+        chdir: "{{ playbook_dir }}"
+
+    - name: Verificar que la imagen se creó correctamente
+      ansible.builtin.command:
+        cmd: podman images | grep custom-ee
+      register: ee_image_check
+
+    - name: Subir la imagen al registro de contenedores (opcional)
+      ansible.builtin.command:
+        cmd: podman push custom-ee:latest registry.example.com/custom-ee:latest
+      when: upload_image | default(false)

@@ -23,7 +23,8 @@
   
     - name: Ejecutar ansible-builder para crear el EE
       ansible.builtin.command:
-        cmd: ${HOME}/.local/bin/ansible-builder build --tag ansible-pah.liverpool.com.mx/liverpool/custom-ee:latest 
+        cmd: ${HOME}/.local/bin/ansible-builder build --tag ansible-pah.liverpool.com.mx/liverpool/custom-ee:latest -v3
+                                 #ansible-builder build -t ansible-pah.liverpool.com.mx/liverpool/custom-ee:latest -v3
         chdir: "/var"
     
 
